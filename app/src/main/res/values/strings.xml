@@ -4,4 +4,9 @@
     <string name="app_title">Помощник</string>
     <string name="app_subtitle">по парковке</string>
 
+    <string name="label_registration">Регистрация</string>
+    <string name="label_auth">Войти</string>
+    <string name="description_app">Простое бронирование\nпарковочных мест у вашего офиса</string>
+
+
 </resources>
