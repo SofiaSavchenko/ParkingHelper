@@ -71,5 +71,7 @@ dependencies {
     implementation(libs.androidx.core.splashscreen)
     //System UI controller
     implementation(libs.accomponistSystemUiController)
+    //Compose navigation
+    implementation(libs.navigation.compose)
 
 }
