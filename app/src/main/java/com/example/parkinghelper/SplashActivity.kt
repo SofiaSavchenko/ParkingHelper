@@ -1,5 +1,7 @@
 package com.example.parkinghelper
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -12,10 +14,19 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.core.view.WindowCompat
+import com.example.parkinghelper.presentation.screens.SplashScreen
 import com.example.parkinghelper.presentation.theme.ParkingHelperTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
-class MainActivity : ComponentActivity() {
+@SuppressLint("CustomSplashScreen")
+class SplashActivity : ComponentActivity() {
+
+    private val scope = MainScope()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -27,9 +38,21 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.onBackground
                 ) {
                     ApplySystemBarColors()
+                    SplashScreen()
                 }
             }
         }
+
+        scope.launch {
+            delay(3000)
+            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+            finish()
+        }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        scope.cancel()
     }
 
     private fun setupSystemBarColors() {
