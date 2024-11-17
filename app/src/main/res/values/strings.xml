@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">ParkingHelper</string>
+
+    <string name="app_title">Помощник</string>
+    <string name="app_subtitle">по парковке</string>
+
 </resources>
