@@ -1,4 +1,4 @@
-package com.example.parkinghelper.presentation.screens.control_screen
+package com.example.parkinghelper.presentation.screens.get_random_space_screen
 
 import android.annotation.SuppressLint
 import android.content.res.Configuration
@@ -34,32 +34,32 @@ import androidx.navigation.compose.rememberNavController
 import com.example.parkinghelper.R
 import com.example.parkinghelper.presentation.components.PrimaryButton
 import com.example.parkinghelper.presentation.components.SecondaryButton
-import com.example.parkinghelper.presentation.screens.control_screen.store.ControlEffect
-import com.example.parkinghelper.presentation.screens.control_screen.store.ControlIntent
-import com.example.parkinghelper.presentation.screens.control_screen.store.ControlState
+import com.example.parkinghelper.presentation.screens.get_random_space_screen.store.GetRandomSpaceEffect
+import com.example.parkinghelper.presentation.screens.get_random_space_screen.store.GetRandomSpaceIntent
+import com.example.parkinghelper.presentation.screens.get_random_space_screen.store.GetRandomSpaceState
 import com.example.parkinghelper.presentation.theme.ParkingHelperTheme
 import kotlinx.coroutines.flow.MutableSharedFlow
 
 @Composable
-fun ControlScreen(
-    controlState: State<ControlState>,
-    @SuppressLint("ComposeMutableParameters") controlEffect: MutableSharedFlow<ControlEffect>,
-    onControlIntent: (ControlIntent) -> Unit,
+fun GetRandomSpaceScreen(
+    getRandomSpaceState: State<GetRandomSpaceState>,
+    @SuppressLint("ComposeMutableParameters") getRandomSpaceEffect: MutableSharedFlow<GetRandomSpaceEffect>,
+    onGetRandomSpaceIntent: (GetRandomSpaceIntent) -> Unit,
     navHostController: NavHostController,
     modifier: Modifier = Modifier
 ) {
     LaunchedEffect(key1 = Unit) {
-        controlEffect.collect { effect ->
+        getRandomSpaceEffect.collect { effect ->
             when (effect) {
-                ControlEffect.ConfirmParkingSpace -> {
+                GetRandomSpaceEffect.ConfirmParkingSpace -> {
 
                 }
 
-                ControlEffect.GetAnotherParkingSpace -> {
+                GetRandomSpaceEffect.GetAnotherParkingSpace -> {
 
                 }
 
-                ControlEffect.ReturnBack -> {
+                GetRandomSpaceEffect.ReturnBack -> {
 
                 }
             }
@@ -70,7 +70,7 @@ fun ControlScreen(
             Row(modifier = Modifier.padding(top = 12.dp, start = 16.dp, end = 16.dp)) {
                 IconButton(
                     onClick = {
-                        onControlIntent(ControlIntent.ReturnBack)
+                        onGetRandomSpaceIntent(GetRandomSpaceIntent.ReturnBack)
                     }
                 ) {
                     Icon(
@@ -104,7 +104,7 @@ fun ControlScreen(
                 }
                 append(" ")
                 withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.secondary)) {
-                    append(controlState.value.selectedSpace)
+                    append(getRandomSpaceState.value.selectedSpace)
                 }
             }
 
@@ -124,13 +124,13 @@ fun ControlScreen(
                     text = stringResource(id = R.string.button_confirm_parking_space),
                     enabled = true,
                     onClick = {
-                        onControlIntent(ControlIntent.ConfirmParkingSpace)
+                        onGetRandomSpaceIntent(GetRandomSpaceIntent.ConfirmParkingSpace)
                     })
                 SecondaryButton(
                     text = stringResource(id = R.string.button_get_another_space),
                     enabled = true,
                     onClick = {
-                        onControlIntent(ControlIntent.GetAnotherParkingSpace)
+                        onGetRandomSpaceIntent(GetRandomSpaceIntent.GetAnotherParkingSpace)
                     })
             }
         }
@@ -139,13 +139,13 @@ fun ControlScreen(
 
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_NO)
 @Composable
-private fun ControlScreenPreviewLight() {
+private fun GetRandomSpaceScreenPreviewLight() {
     ParkingHelperTheme(dynamicColor = false) {
-        val controlViewModel = ControlViewModel()
-        ControlScreen(
-            controlState = controlViewModel.controlState.collectAsState(),
-            controlEffect = controlViewModel.controlEffect,
-            onControlIntent = controlViewModel::onIntent,
+        val getRandomSpaceViewModel = GetRandomSpaceViewModel()
+        GetRandomSpaceScreen(
+            getRandomSpaceState = getRandomSpaceViewModel.getRandomSpaceState.collectAsState(),
+            getRandomSpaceEffect = getRandomSpaceViewModel.getRandomSpaceEffect,
+            onGetRandomSpaceIntent = getRandomSpaceViewModel::onIntent,
             navHostController = rememberNavController()
         )
     }
@@ -153,13 +153,13 @@ private fun ControlScreenPreviewLight() {
 
 @Preview(showBackground = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
-private fun ControlScreenPreviewDark() {
+private fun GetRandomSpaceScreenPreviewDark() {
     ParkingHelperTheme(dynamicColor = false) {
-        val controlViewModel = ControlViewModel()
-        ControlScreen(
-            controlState = controlViewModel.controlState.collectAsState(),
-            controlEffect = controlViewModel.controlEffect,
-            onControlIntent = controlViewModel::onIntent,
+        val getRandomSpaceViewModel = GetRandomSpaceViewModel()
+        GetRandomSpaceScreen(
+            getRandomSpaceState = getRandomSpaceViewModel.getRandomSpaceState.collectAsState(),
+            getRandomSpaceEffect = getRandomSpaceViewModel.getRandomSpaceEffect,
+            onGetRandomSpaceIntent = getRandomSpaceViewModel::onIntent,
             navHostController = rememberNavController()
         )
     }
