@@ -13,4 +13,9 @@
     <string name="title_get_place">Забронировать парковочное место</string>
     <string name="button_get_random_place">Получить любое свободное место</string>
 
+    <string name="header_back_content_desc">Назад</string>
+    <string name="title_your_parking_space">Ваше парковочное место -</string>
+    <string name="button_confirm_parking_space">Подтвердить</string>
+    <string name="button_get_another_space">Получить другое место</string>
+
 </resources>
