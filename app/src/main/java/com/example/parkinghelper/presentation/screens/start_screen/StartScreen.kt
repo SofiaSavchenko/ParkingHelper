@@ -27,7 +27,6 @@ import com.example.parkinghelper.presentation.components.SecondaryButton
 import com.example.parkinghelper.presentation.screens.start_screen.store.StartScreenEffect
 import com.example.parkinghelper.presentation.screens.start_screen.store.StartScreenIntent
 import com.example.parkinghelper.presentation.theme.ParkingHelperTheme
-import com.example.parkinghelper.presentation.utils.RootScreen
 import kotlinx.coroutines.flow.MutableSharedFlow
 
 @SuppressLint("ComposeModifierMissing")
@@ -40,17 +39,15 @@ fun StartScreen(
     LaunchedEffect(key1 = Unit) {
         startScreenEffect.collect { effect ->
             when (effect) {
-                StartScreenEffect.ClickLogin -> navHostController.navigate(RootScreen.AUTHORIZATION_SCREEN)
-                StartScreenEffect.ClickRegistration -> {
-                    navHostController.navigate(route = RootScreen.REGISTRATION_SCREEN)
-                }
+                StartScreenEffect.ClickLogin -> {}
+                StartScreenEffect.ClickRegistration -> {}
             }
         }
     }
 
     Column(
         Modifier
-            .background(MaterialTheme.colorScheme.onBackground)
+            .background(MaterialTheme.colorScheme.background)
             .fillMaxWidth()
             .fillMaxHeight()
             .padding(horizontal = 30.dp),
@@ -93,13 +90,13 @@ fun StartScreen(
             verticalArrangement = Arrangement.spacedBy(space = 20.dp, alignment = Alignment.Top)
         ) {
             PrimaryButton(
-                text = stringResource(id = R.string.label_registration),
+                text = stringResource(id = R.string.button_registration),
                 enabled = true,
                 onClick = {
                     onStartScreenIntent(StartScreenIntent.ClickRegistration)
                 })
             SecondaryButton(
-                text = stringResource(id = R.string.label_auth),
+                text = stringResource(id = R.string.button_auth),
                 enabled = true,
                 onClick = {
                     onStartScreenIntent(StartScreenIntent.ClickLogin)

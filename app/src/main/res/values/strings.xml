@@ -4,9 +4,13 @@
     <string name="app_title">Помощник</string>
     <string name="app_subtitle">по парковке</string>
 
-    <string name="label_registration">Регистрация</string>
-    <string name="label_auth">Войти</string>
+    <string name="button_registration">Регистрация</string>
+    <string name="button_auth">Войти</string>
     <string name="description_app">Простое бронирование\nпарковочных мест у вашего офиса</string>
 
+    <string name="title_free_places">Доступные парковочные места:</string>
+    <string name="button_scan_qr">Отсканировать QR-код</string>
+    <string name="title_get_place">Забронировать парковочное место</string>
+    <string name="button_get_random_place">Получить любое свободное место</string>
 
 </resources>

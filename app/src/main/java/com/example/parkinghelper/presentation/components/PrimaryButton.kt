@@ -19,6 +19,7 @@ import com.example.parkinghelper.presentation.theme.ParkingHelperTheme
 fun PrimaryButton(
     text: String,
     enabled: Boolean,
+    textAlign: TextAlign = TextAlign.Center,
     modifier: Modifier = Modifier,
     onClick: () -> Unit
 ) {
@@ -32,16 +33,16 @@ fun PrimaryButton(
         shape = MaterialTheme.shapes.medium,
         colors = ButtonDefaults.buttonColors(
             containerColor = MaterialTheme.colorScheme.secondary,
-            disabledContainerColor = MaterialTheme.colorScheme.secondary,
-            contentColor = MaterialTheme.colorScheme.background,
-            disabledContentColor = MaterialTheme.colorScheme.background
+            disabledContainerColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.5f),
+            contentColor = MaterialTheme.colorScheme.onSurface,
+            disabledContentColor = MaterialTheme.colorScheme.onSurface.copy(alpha = 0.5f)
         )
     ) {
         Text(
             modifier = modifier.fillMaxWidth(),
             text = text,
-            style = MaterialTheme.typography.bodyLarge,
-            textAlign = TextAlign.Center
+            style = MaterialTheme.typography.bodyMedium,
+            textAlign = textAlign
         )
     }
 }
