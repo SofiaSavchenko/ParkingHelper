@@ -21,6 +21,7 @@ import com.example.parkinghelper.presentation.theme.ParkingHelperTheme
 fun SecondaryButton(
     text: String,
     enabled: Boolean,
+    buttonColor: Color = MaterialTheme.colorScheme.secondary,
     modifier: Modifier = Modifier,
     onClick: () -> Unit
 ){
@@ -35,10 +36,10 @@ fun SecondaryButton(
         colors = ButtonDefaults.outlinedButtonColors(
             containerColor = Color.Transparent,
             disabledContainerColor = Color.Transparent,
-            contentColor = MaterialTheme.colorScheme.secondary,
-            disabledContentColor = MaterialTheme.colorScheme.secondary
+            contentColor = buttonColor,
+            disabledContentColor = buttonColor.copy(alpha = 0.5f)
         ),
-        border = BorderStroke(width = 1.dp, color = MaterialTheme.colorScheme.secondary)
+        border = BorderStroke(width = 1.dp, color = buttonColor)
     ) {
         Text(
             modifier = Modifier.fillMaxWidth(),

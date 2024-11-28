@@ -18,4 +18,10 @@
     <string name="button_confirm_parking_space">Подтвердить</string>
     <string name="button_get_another_space">Получить другое место</string>
 
+    <string name="title_control_screen">Управление</string>
+    <string name="title_reservation_space">Забронированное место -</string>
+    <string name="button_mark_as_busy">Отметить как занятое</string>
+    <string name="button_mark_as_free">Отметить как свободное</string>
+    <string name="button_cancel_reservation">Отменить бронь</string>
+
 </resources>
