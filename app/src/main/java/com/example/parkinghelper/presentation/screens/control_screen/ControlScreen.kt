@@ -69,15 +69,11 @@ fun ControlScreen(
         }
     }
     Scaffold(
+        modifier = modifier,
         topBar = {
             ScreenHeader(
                 modifier = Modifier
-                    .padding(top = 12.dp, start = 16.dp, end = 16.dp)
-                    .padding(
-                        top = WindowInsets.statusBars
-                            .asPaddingValues()
-                            .calculateTopPadding()
-                    ),
+                    .padding(top = 12.dp, start = 16.dp, end = 16.dp),
                 title = stringResource(
                     id = R.string.title_control_screen
                 ),
@@ -94,7 +90,7 @@ fun ControlScreen(
                 .fillMaxWidth()
                 .fillMaxHeight()
                 .padding(paddingValues)
-                .padding(top = 30.dp, bottom = 20.dp)
+                .padding(top = 30.dp)
                 .padding(horizontal = 30.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(
