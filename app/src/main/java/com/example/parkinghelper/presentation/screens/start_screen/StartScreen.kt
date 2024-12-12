@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.parkinghelper.R
+import com.example.parkinghelper.presentation.RootScreen
 import com.example.parkinghelper.presentation.components.PrimaryButton
 import com.example.parkinghelper.presentation.components.SecondaryButton
 import com.example.parkinghelper.presentation.screens.start_screen.store.StartScreenEffect
@@ -39,7 +40,10 @@ fun StartScreen(
     LaunchedEffect(key1 = Unit) {
         startScreenEffect.collect { effect ->
             when (effect) {
-                StartScreenEffect.ClickLogin -> {}
+                StartScreenEffect.ClickLogin -> {
+                    navHostController.navigate(RootScreen.HOME_SCREEN)
+                }
+
                 StartScreenEffect.ClickRegistration -> {}
             }
         }

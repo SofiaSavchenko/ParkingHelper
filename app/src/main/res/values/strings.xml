@@ -24,4 +24,8 @@
     <string name="button_mark_as_free">Отметить как свободное</string>
     <string name="button_cancel_reservation">Отменить бронь</string>
 
+    <string name="home_screen_label">Главная</string>
+    <string name="control_screen_label">Управление</string>
+    <string name="profile_screen_label">Профиль</string>
+
 </resources>

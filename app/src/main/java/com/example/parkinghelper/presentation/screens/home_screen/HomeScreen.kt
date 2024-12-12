@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.parkinghelper.R
+import com.example.parkinghelper.presentation.LeafHomeScreen
 import com.example.parkinghelper.presentation.components.PrimaryButton
 import com.example.parkinghelper.presentation.screens.home_screen.store.HomeEffect
 import com.example.parkinghelper.presentation.screens.home_screen.store.HomeIntent
@@ -50,7 +51,7 @@ fun HomeScreen(
                 }
 
                 HomeEffect.GetRandomParkingPlace -> {
-
+                    navHostController.navigate(LeafHomeScreen.RANDOM_PARKING_PLACE_SCREEN)
                 }
             }
         }
@@ -62,6 +63,7 @@ fun HomeScreen(
                 .background(MaterialTheme.colorScheme.background)
                 .fillMaxWidth()
                 .fillMaxHeight()
+                .padding(paddingValues)
                 .padding(top = 75.dp)
                 .padding(horizontal = 35.dp),
             horizontalAlignment = Alignment.CenterHorizontally,
@@ -72,7 +74,6 @@ fun HomeScreen(
         ) {
             Column(
                 modifier = Modifier
-                    .padding(paddingValues)
                     .align(Alignment.CenterHorizontally),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(
@@ -81,7 +82,7 @@ fun HomeScreen(
                 )
             ) {
                 val annotatedString = buildAnnotatedString {
-                    withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.onBackground)){
+                    withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.onBackground)) {
                         append(stringResource(id = R.string.title_free_places))
                     }
                     append(" ")

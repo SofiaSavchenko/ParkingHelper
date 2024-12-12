@@ -6,10 +6,13 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.rounded.ArrowBack
 import androidx.compose.material3.Icon
@@ -60,14 +63,22 @@ fun GetRandomSpaceScreen(
                 }
 
                 GetRandomSpaceEffect.ReturnBack -> {
-
+                    navHostController.navigateUp()
                 }
             }
         }
     }
     Scaffold(
         topBar = {
-            Row(modifier = Modifier.padding(top = 12.dp, start = 16.dp, end = 16.dp)) {
+            Row(
+                modifier = Modifier
+                    .padding(top = 12.dp, start = 16.dp, end = 16.dp)
+                    .padding(
+                        top = WindowInsets.statusBars
+                            .asPaddingValues()
+                            .calculateTopPadding()
+                    )
+            ) {
                 IconButton(
                     onClick = {
                         onGetRandomSpaceIntent(GetRandomSpaceIntent.ReturnBack)

@@ -12,9 +12,12 @@ import androidx.compose.runtime.SideEffect
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.core.view.WindowCompat
+import com.example.parkinghelper.presentation.Root
 import com.example.parkinghelper.presentation.theme.ParkingHelperTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,6 +30,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.onBackground
                 ) {
                     ApplySystemBarColors()
+                    Root()
                 }
             }
         }
