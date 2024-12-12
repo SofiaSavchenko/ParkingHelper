@@ -69,15 +69,11 @@ fun GetRandomSpaceScreen(
         }
     }
     Scaffold(
+        modifier = modifier,
         topBar = {
             Row(
                 modifier = Modifier
                     .padding(top = 12.dp, start = 16.dp, end = 16.dp)
-                    .padding(
-                        top = WindowInsets.statusBars
-                            .asPaddingValues()
-                            .calculateTopPadding()
-                    )
             ) {
                 IconButton(
                     onClick = {

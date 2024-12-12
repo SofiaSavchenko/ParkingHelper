@@ -9,7 +9,6 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -57,77 +56,74 @@ fun HomeScreen(
         }
     }
 
-    Scaffold { paddingValues ->
+    Column(
+        modifier
+            .background(MaterialTheme.colorScheme.background)
+            .fillMaxWidth()
+            .fillMaxHeight()
+            .padding(top = 75.dp)
+            .padding(horizontal = 35.dp),
+        horizontalAlignment = Alignment.CenterHorizontally,
+        verticalArrangement = Arrangement.spacedBy(
+            space = 35.dp,
+            alignment = Alignment.Top
+        )
+    ) {
         Column(
-            Modifier
-                .background(MaterialTheme.colorScheme.background)
-                .fillMaxWidth()
-                .fillMaxHeight()
-                .padding(paddingValues)
-                .padding(top = 75.dp)
-                .padding(horizontal = 35.dp),
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally),
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.spacedBy(
-                space = 35.dp,
+                space = 20.dp,
                 alignment = Alignment.Top
             )
         ) {
-            Column(
-                modifier = Modifier
-                    .align(Alignment.CenterHorizontally),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(
-                    space = 20.dp,
-                    alignment = Alignment.Top
-                )
-            ) {
-                val annotatedString = buildAnnotatedString {
-                    withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.onBackground)) {
-                        append(stringResource(id = R.string.title_free_places))
-                    }
-                    append(" ")
-                    withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.secondary)) {
-                        append(homeState.value.countPlaces.toString())
-                    }
+            val annotatedString = buildAnnotatedString {
+                withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.onBackground)) {
+                    append(stringResource(id = R.string.title_free_places))
                 }
-
-                Text(
-                    text = annotatedString,
-                    style = MaterialTheme.typography.titleMedium
-                )
-
-                PrimaryButton(
-                    text = stringResource(id = R.string.button_scan_qr),
-                    enabled = true,
-                    textAlign = TextAlign.Start,
-                    onClick = {
-                        onHomeIntent(HomeIntent.ScanQR)
-                    })
+                append(" ")
+                withStyle(style = SpanStyle(color = MaterialTheme.colorScheme.secondary)) {
+                    append(homeState.value.countPlaces.toString())
+                }
             }
 
-            Column(
-                modifier = Modifier
-                    .align(Alignment.CenterHorizontally),
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.spacedBy(
-                    space = 20.dp,
-                    alignment = Alignment.Top
-                )
-            ) {
-                Text(
-                    text = stringResource(id = R.string.title_get_place),
-                    style = MaterialTheme.typography.titleMedium,
-                    color = MaterialTheme.colorScheme.onBackground
-                )
+            Text(
+                text = annotatedString,
+                style = MaterialTheme.typography.titleMedium
+            )
 
-                PrimaryButton(
-                    text = stringResource(id = R.string.button_get_random_place),
-                    enabled = true,
-                    textAlign = TextAlign.Start,
-                    onClick = {
-                        onHomeIntent(HomeIntent.GetRandomParkingPlace)
-                    })
-            }
+            PrimaryButton(
+                text = stringResource(id = R.string.button_scan_qr),
+                enabled = true,
+                textAlign = TextAlign.Start,
+                onClick = {
+                    onHomeIntent(HomeIntent.ScanQR)
+                })
+        }
+
+        Column(
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(
+                space = 20.dp,
+                alignment = Alignment.Top
+            )
+        ) {
+            Text(
+                text = stringResource(id = R.string.title_get_place),
+                style = MaterialTheme.typography.titleMedium,
+                color = MaterialTheme.colorScheme.onBackground
+            )
+
+            PrimaryButton(
+                text = stringResource(id = R.string.button_get_random_place),
+                enabled = true,
+                textAlign = TextAlign.Start,
+                onClick = {
+                    onHomeIntent(HomeIntent.GetRandomParkingPlace)
+                })
         }
     }
 }
