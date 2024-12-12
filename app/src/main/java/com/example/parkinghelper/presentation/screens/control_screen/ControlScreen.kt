@@ -6,9 +6,12 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
+import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.statusBars
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -60,7 +63,7 @@ fun ControlScreen(
                 }
 
                 ControlEffect.ReturnBack -> {
-
+                    navHostController.navigateUp()
                 }
             }
         }
@@ -68,7 +71,13 @@ fun ControlScreen(
     Scaffold(
         topBar = {
             ScreenHeader(
-                modifier = Modifier.padding(top = 12.dp, start = 16.dp, end = 16.dp),
+                modifier = Modifier
+                    .padding(top = 12.dp, start = 16.dp, end = 16.dp)
+                    .padding(
+                        top = WindowInsets.statusBars
+                            .asPaddingValues()
+                            .calculateTopPadding()
+                    ),
                 title = stringResource(
                     id = R.string.title_control_screen
                 ),

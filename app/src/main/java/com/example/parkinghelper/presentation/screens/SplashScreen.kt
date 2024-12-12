@@ -26,43 +26,46 @@ import com.example.parkinghelper.presentation.theme.ParkingHelperTheme
 
 @Composable
 fun SplashScreen() {
-    Box(
-        modifier = Modifier
-            .fillMaxSize()
-            .background(MaterialTheme.colorScheme.primary)
-    ) {
-        Column(
-            horizontalAlignment = Alignment.CenterHorizontally,
+    Scaffold { paddingValues ->
+        Box(
             modifier = Modifier
-                .align(Alignment.Center)
-                .padding(horizontal = 64.dp)
+                .fillMaxSize()
+                .padding(paddingValues)
+                .background(MaterialTheme.colorScheme.primary)
         ) {
-            Text(
-                text = stringResource(id = R.string.app_title),
-                style = MaterialTheme.typography.headlineMedium,
-                fontWeight = FontWeight.Medium,
-                color = MaterialTheme.colorScheme.onBackground
-            )
-            Text(
-                text = stringResource(id = R.string.app_subtitle),
-                style = MaterialTheme.typography.headlineMedium,
-                fontWeight = FontWeight.Medium,
-                color = MaterialTheme.colorScheme.onBackground
-            )
-        }
-        val imageResId = if (isSystemInDarkTheme()) {
-            R.drawable.dark_splash_logo
-        } else {
-            R.drawable.light_splash_logo
-        }
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .padding(horizontal = 64.dp)
+            ) {
+                Text(
+                    text = stringResource(id = R.string.app_title),
+                    style = MaterialTheme.typography.headlineMedium,
+                    fontWeight = FontWeight.Medium,
+                    color = MaterialTheme.colorScheme.onBackground
+                )
+                Text(
+                    text = stringResource(id = R.string.app_subtitle),
+                    style = MaterialTheme.typography.headlineMedium,
+                    fontWeight = FontWeight.Medium,
+                    color = MaterialTheme.colorScheme.onBackground
+                )
+            }
+            val imageResId = if (isSystemInDarkTheme()) {
+                R.drawable.dark_splash_logo
+            } else {
+                R.drawable.light_splash_logo
+            }
 
-        Image(
-            painter = painterResource(id = imageResId),
-            contentDescription = null,
-            modifier = Modifier
-                .align(Alignment.BottomEnd)
-                .size(width = 160.dp, height = 65.dp)
-        )
+            Image(
+                painter = painterResource(id = imageResId),
+                contentDescription = null,
+                modifier = Modifier
+                    .align(Alignment.BottomEnd)
+                    .size(width = 160.dp, height = 65.dp)
+            )
+        }
     }
 }
 

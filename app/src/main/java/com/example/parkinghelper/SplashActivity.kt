@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.core.view.WindowCompat
 import com.example.parkinghelper.presentation.screens.SplashScreen
+import com.example.parkinghelper.presentation.theme.ParkingHelperSplashTheme
 import com.example.parkinghelper.presentation.theme.ParkingHelperTheme
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 import kotlinx.coroutines.MainScope
@@ -32,7 +33,7 @@ class SplashActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             setupSystemBarColors()
-            ParkingHelperTheme(dynamicColor = false) {
+            ParkingHelperSplashTheme(dynamicColor = false) {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.onBackground
