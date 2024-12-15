@@ -20,6 +20,8 @@ import com.example.parkinghelper.presentation.screens.get_random_space_screen.st
 import com.example.parkinghelper.presentation.screens.home_screen.HomeScreen
 import com.example.parkinghelper.presentation.screens.home_screen.HomeViewModel
 import com.example.parkinghelper.presentation.screens.home_screen.store.HomeState
+import com.example.parkinghelper.presentation.screens.qr_screen.QrScreen
+import com.example.parkinghelper.presentation.screens.qr_screen.QrViewModel
 import com.example.parkinghelper.presentation.screens.start_screen.StartScreen
 import com.example.parkinghelper.presentation.screens.start_screen.StartScreenViewModel
 
@@ -94,6 +96,17 @@ fun NavGraph(navHostController: NavHostController, modifier: Modifier = Modifier
                     ),
                     getRandomSpaceEffect = randomViewModel.getRandomSpaceEffect,
                     onGetRandomSpaceIntent = randomViewModel::onIntent,
+                    navHostController = navHostController,
+                    modifier = modifier
+                )
+            }
+            composable(
+                route = LeafHomeScreen.QR_SCREEN
+            ) {
+                val qrViewModel: QrViewModel = hiltViewModel()
+                QrScreen(
+                    qrEffect = qrViewModel.qrEffect,
+                    onQrIntent = qrViewModel::onIntent,
                     navHostController = navHostController,
                     modifier = modifier
                 )

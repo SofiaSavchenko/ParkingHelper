@@ -18,4 +18,5 @@ object LeafScreen {
 object LeafHomeScreen {
     const val HOME_SCREEN = "home"
     const val RANDOM_PARKING_PLACE_SCREEN = "random"
+    const val QR_SCREEN = "qr"
 }
