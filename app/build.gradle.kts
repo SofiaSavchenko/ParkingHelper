@@ -79,6 +79,12 @@ dependencies {
     implementation(libs.daggerHilt)
     kapt(libs.hilt)
     implementation(libs.hiltNavigation)
+    //CameraX
+    implementation(libs.camera)
+    implementation(libs.camera.lifecycle)
+    implementation(libs.camera.view)
+    //Zxing
+    implementation(libs.zxing)
 
 }
 

@@ -46,7 +46,7 @@ fun HomeScreen(
         homeEffect.collect { effect ->
             when (effect) {
                 HomeEffect.ScanQR -> {
-
+                    navHostController.navigate(LeafHomeScreen.QR_SCREEN)
                 }
 
                 HomeEffect.GetRandomParkingPlace -> {
